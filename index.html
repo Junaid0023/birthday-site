@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+        }
+
+        .btn {
+            position: absolute;
+            left: 50%;
+            bottom: 10%;
+            padding: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            transform: translateX(-50%);
+        }
+
+        .befday-container {
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            align-items: center;
+            background-color: lightgreen;
+            justify-content: center;
+            width: 50%;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        small {
+            padding: 1rem 0;
+        }
+
+        span {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <button class="btn">OPEN TO SEE BIRTHDAY GIFT</button>
+    </div>
+
+    <div class="befday-container">
+        <h1>HAPPY BIRTHDAY ISHAQ!</h1>
+        <small>momo me 200ghc on this number <span>0557207554</span></small>
+    </div>
+
+    <script>
+        const btnEl = document.querySelector(".btn");
+        const befcontainer = document.querySelector('.befday-container');
+        const phoneNumberElement = befcontainer.querySelector('h1');
+        
+        let clickedOnce = false;
+
+        // Timer to handle the logic after the first click
+        btnEl.addEventListener('click', () => {
+            if (!clickedOnce) {
+                // Show the popup and change button text after a short delay
+                befcontainer.style.display = 'flex';  // Show the birthday message
+                // btnEl.textContent = 'Click again';  // Change button text
+
+                // Modify the popup content
+                setTimeout(() => {
+                    phoneNumberElement.textContent = 'Adey wait abeg🤣';  // Change phone number
+                }, 3000);  // Wait for 1 second before changing the phone number
+                
+                clickedOnce = true;  // Set flag to true so we know the button has been clicked once
+            } else {
+                // If clicked again, toggle the popup visibility
+                befcontainer.style.display = 'none';  // Hide the birthday message
+                btnEl.textContent = 'OPEN TO SEE BIRTHDAY GIFT';  // Reset button text
+                clickedOnce = false;  // Reset the flag so it can show again
+            }
+        });
+    </script>
+
+</body>
+</html>
